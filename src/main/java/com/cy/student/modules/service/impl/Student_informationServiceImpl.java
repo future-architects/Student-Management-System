@@ -27,6 +27,7 @@ public class Student_informationServiceImpl extends ServiceImpl<Student_informat
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
 
+        Object temp = params.get("temp");
         String sql ="select * from student_information";
 
         sql+=" order by id desc";

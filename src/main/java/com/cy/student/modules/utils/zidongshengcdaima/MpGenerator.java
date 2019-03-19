@@ -64,7 +64,7 @@ public class MpGenerator {
         // strategy.setSuperEntityClass("com.baomidou.demo.TestEntity");
         // 自定义实体，公共字段
         // strategy.setSuperEntityColumns(new String[] { "test_id", "age" });
-        // 自定义 mapper 父类
+        // 自定义 mappers 父类
         // strategy.setSuperMapperClass("com.baomidou.demo.TestMapper");
         // 自定义 service 父类
         // strategy.setSuperServiceClass("com.baomidou.demo.TestService");
@@ -109,7 +109,7 @@ public class MpGenerator {
 //        mpg.setCfg(cfg);
 //
 //        // 调整 xml 生成目录演示
-//        focList.add(new FileOutConfig("/templates/mapper.xml.vm") {
+//        focList.add(new FileOutConfig("/templates/mappers.xml.vm") {
 //            @Override
 //            public String outputFile(TableInfo tableInfo) {
 //                return "/develop/code/xml/" + tableInfo.getEntityName() + ".xml";
