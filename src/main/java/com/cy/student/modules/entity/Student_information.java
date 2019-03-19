@@ -134,7 +134,7 @@ public class Student_information extends Model<Student_information> {
 
     @Override
     public String toString() {
-        return "Student_information{" +
+        return "studentInformation{" +
         "id=" + id +
         ", student_name=" + student_name +
         ", student_phone=" + student_phone +
