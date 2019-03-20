@@ -4,7 +4,10 @@ $(document).ready(function() {
     var currentpagecount="";
     //收藏、下载、建议、废除、复用-触发
     window.operateEvents = {
-        'click .templatesuggestproposal_button': function (e, value, row, index) {
+        'click .del_button': function (e, value, row, index) {
+            selecttableid=row.id;
+            alert(selecttableid);
+            toastr_success(selecttableid)
             // templateUuid=row.template_uuid;
             // getTemplateinfoproposal();
             // templateselectByUuId();
@@ -23,7 +26,7 @@ $(document).ready(function() {
         pagination: true, //是否显示分页（*）
         sortable: false, //是否启用排序
         pageNumber: 1, //初始化加载第一页，默认第一页
-        pageSize: 10, //每页的记录行数（*）
+        pageSize: pagenumber, //每页的记录行数（*）
         buttonsAlign: "right",
         paginationPreText: '上一页',
         paginationNextText: '下一页',
@@ -33,7 +36,7 @@ $(document).ready(function() {
         sidePagination: "server", //分页方式：client客户端分页，server服务端分页（*）
         locale: 'zh-CN',
         showColumns: true,                  //是否显示所有的列
-        pageList: 10,
+        pageList: [pagenumber],
         //得到查询的参数
         queryParams: function (params) {
             currentpagecount = ((params.offset / params.limit) + 1)
@@ -51,7 +54,7 @@ $(document).ready(function() {
                 field: '',
                 align: 'center',
                 formatter: function (value, row, index) {
-                    return getOrderNumber("templatecountlist", index)
+                    return getOrderNumber("studentInformationList", index)
                 }
             }, {
                 field: 'student_name',
@@ -95,20 +98,10 @@ $(document).ready(function() {
     function operateFormatter(value, row, index) {
         selecttableid = row.id;
 
-        if (row.del_flag == -2) {
             return [
-                //下载
-                '<button   type="button" class="btn btn-primary btn-xs download_button" id="download" data-toggle="modal" title="下载附件" ><i class="fa fa-cloud-download" aria-hidden="true"></i></button>' +
-                //收藏
-                '<button  type="button" class="btn btn-primary btn-xs templateadd_button" id="templateaddButton" data-toggle="modal" data-target="#templatecollection" style="background:#B8860B;border-color:#B8860B" title="收藏" ><i class="fa fa-bookmark" aria-hidden="true"></i></button>' +
-                //建议
-                '<button   type="button" class="btn btn-primary btn-xs templatesuggestproposal_button" id="templatesuggestproposalsButton" data-toggle="modal" title="使用建议" ><i class="fa fa-envelope" aria-hidden="true"></i></button>' +
-                //历史
-                '<button   type="button" class="btn btn-primary btn-xs templatehistorytproposal_button" id="templateHistoryButton" data-toggle="modal" title="查看历史" style="background:#B8860B;border-color:#B8860B" ><i class="fa fa-clock-o" aria-hidden="true"></i></button>' +
-                //恢复使用
-                '<button   type="button" class="btn btn-primary btn-xs templateDelCancel_button" id="templateDelCancel_button" data-toggle="modal" data-target="#templateCancelDel" title="恢复使用" ><i class="fa fa-check" aria-hidden="true"></i></button>'
+                //删除
+                '<button   type="button" class="btn btn-primary btn-xs del_button" id="templateDel_button" data-toggle="modal" title="废除" data-target="#templateDel" style="background:#d9534f;border-color:#d9534f" ><i class="fa fa-times" aria-hidden="true"></i></button>'
             ]
-        }
 
     };
 
