@@ -7,6 +7,7 @@ $(document).ready(function() {
         'click .del_button': function (e, value, row, index) {
             selecttableid=row.id;
             alert(selecttableid);
+
             toastr_success(selecttableid)
             // templateUuid=row.template_uuid;
             // getTemplateinfoproposal();
