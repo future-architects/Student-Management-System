@@ -3,6 +3,7 @@ $(document).ready(function() {
 
     var currentpagecount="";
     //收藏、下载、建议、废除、复用-触发
+    //
     window.operateEvents = {
         'click .del_button': function (e, value, row, index) {
             selecttableid=row.id;
