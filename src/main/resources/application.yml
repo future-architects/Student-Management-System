@@ -40,7 +40,7 @@ systemconfig:
 
 
             mybatis-plus:
-              mapper-locations: classpath:mappers/*.xml
+              mapper-locations: classpath:mappers/business/**/*.xml
               #实体扫描，多个package用逗号或者分号分隔
               typeAliasesPackage: com.cy.student.modules.*.entity
               global-config:
