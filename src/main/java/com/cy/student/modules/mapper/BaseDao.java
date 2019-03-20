@@ -1,4 +1,4 @@
-package com.cy.student.modules.utils.dao;
+package com.cy.student.modules.mapper;
 
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;

@@ -1,5 +1,6 @@
 package com.cy.student.modules.utils.dao;
 
+import com.cy.student.modules.mapper.BaseDao;
 import com.cy.student.modules.utils.MapToBean;
 import com.cy.student.modules.utils.PageUtils;
 import com.cy.student.modules.utils.check.CheckUtils;
