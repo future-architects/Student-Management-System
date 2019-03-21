@@ -14,23 +14,27 @@ import java.util.Map;
 
 /**
  * <p>
- *  学生信息服务实现类
+ * 学生信息表 服务实现类
  * </p>
  *
  * @author 袁帅
- * @since 2019-03-19
+ * @since 2019-03-21
  */
 @Service
 public class Student_informationServiceImpl extends ServiceImpl<Student_informationMapper, Student_information> implements IStudent_informationService {
+
     @Autowired
-    private DaoUtils<Student_information> daoUtils;
+    private DaoUtils<Student_information> dateUtils;
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
 
-        Object temp = params.get("temp");
-        String sql ="select * from student_information";
+        String sql = "select sti.*,class.class_name,teacher.teacher_name\n" +
+                "from student_information as sti\n" +
+                "left join class_table as class on sti.class_id=class.id\n" +
+                "left join teacher_information as teacher on sti.guidanceteacher_id=teacher.id where sti.del_flag=0";
 
-        sql+=" order by id desc";
-        return this.daoUtils.findBySql(sql, PageUtilsFactory.getInstance(params) );
+        sql += " order by sti.id desc";
+        return this.dateUtils.findBySql(sql, PageUtilsFactory.getInstance(params) );
     }
+
 }

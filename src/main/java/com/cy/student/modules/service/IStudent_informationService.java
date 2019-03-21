@@ -8,12 +8,14 @@ import java.util.Map;
 
 /**
  * <p>
- *  学生信息服务类
+ * 学生信息表 服务类
  * </p>
  *
  * @author 袁帅
- * @since 2019-03-19
+ * @since 2019-03-21
  */
 public interface IStudent_informationService extends IService<Student_information> {
+
     PageUtils queryPage(Map<String, Object> params);
+
 }

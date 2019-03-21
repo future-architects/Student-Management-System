@@ -1,26 +1,24 @@
 var selecttableid="";
+var currentpagecount="";
+
 $(document).ready(function() {
 
-    var currentpagecount="";
     //收藏、下载、建议、废除、复用-触发
     //
     window.operateEvents = {
         'click .del_button': function (e, value, row, index) {
             selecttableid=row.id;
-            alert(selecttableid);
-
-            toastr_success(selecttableid)
-            // templateUuid=row.template_uuid;
-            // getTemplateinfoproposal();
-            // templateselectByUuId();
-            // uploadFileProposal();
+        },
+        'click .edit_button': function (e, value, row, index) {
+            selecttableid=row.id;
+            getstudentinfo()
         },
 
     };
 
 
     $("#studentInformationList").bootstrapTable({
-        url: '/student_information/list',                      //请求后台的URL（*）
+        url: '/business/student_information/list',                      //请求后台的URL（*）
         method: 'post', //请求方式（*）
         toolbar: '#toolbar',              //工具按钮用哪个容器
         striped: true, //是否显示行间隔色
@@ -60,31 +58,38 @@ $(document).ready(function() {
                 }
             }, {
                 field: 'student_name',
-                title: '姓名',
+                title: '学生姓名',
                 align: 'center'
             }, {
                 field: 'student_phone',
                 title: '联系方式',
                 align: 'center'
             }, {
-                field: 'student_ties',
-                title: '系别',
+                field: 'major_id',
+                title: '所学专业',
                 align: 'center'
             }, {
-                field: 'student_major',
-                title: '专业',
-                align: 'center'
-            }, {
-                field: 'student_class',
-                title: '班级',
+                field: 'class_name',
+                title: '学生班级',
                 align: 'center'
             }, {
                 field: 'student_gender',
-                title: '性别',
+                title: '学生性别',
+                align: 'center',
+                formatter:function (value, row, index) {
+                    if (value==0) {
+                        return "男"
+                    }else {
+                        return "女"
+                    }
+                }
+            }, {
+                field: 'dateofbirth',
+                title: '出生日期',
                 align: 'center'
             }, {
-                field: 'student_age',
-                title: '年龄',
+                field: 'teacher_name',
+                title: '指导教师',
                 align: 'center'
             }, {
                 field: 'button',
@@ -101,11 +106,82 @@ $(document).ready(function() {
         selecttableid = row.id;
 
             return [
+                //编辑
+                '<button   type="button" class="btn btn-primary btn-xs edit_button" id="studentEdit_botton" title="编辑" data-toggle="modal" ><i class="fa fa-pencil"></i></button>'+
                 //删除
-                '<button   type="button" class="btn btn-primary btn-xs del_button" id="templateDel_button" data-toggle="modal" title="废除" data-target="#templateDel" style="background:#d9534f;border-color:#d9534f" ><i class="fa fa-times" aria-hidden="true"></i></button>'
+                '<button   type="button" class="btn btn-primary btn-xs del_button" id="studentDel_button" data-toggle="modal" title="删除" data-target="#studentDel" style="background:#d9534f;border-color:#d9534f" ><i class="fa fa-trash-o"></i></button>'
             ]
 
     };
 
 
+});
+
+
+function getstudentinfo() {
+    new AjaxRequest({
+        url:   "/business/student_information/info/"+selecttableid,
+        type: 'get',
+        param: {},
+        callBack: function (data) {
+            $('#studentEditFrom')[0].reset();
+            $('#studentEditFrom').initForm(data);
+            $("#studentEditModal").modal("show");
+        }
+    });
+}
+
+//刪除
+$('#studentDelButton').bind('click',function() {
+    new AjaxRequest({
+        url: "/business/student_information/delete/" + selecttableid,
+        param: {},
+        buttonid: 'studentDelButton',
+        tableurl: "/business/student_information/list",
+        tableid: 'studentInformationList',
+        tableparam: {currentpagecount: currentpagecount},
+        modalid: 'studentDel',
+        numberpage:true
+    });
+});
+
+$('#student_EditButton').bind('click',function(){
+/*    $("#contractPerformancePlanEditfrom").data('bootstrapValidator').validate();
+    if ($("#contractPerformancePlanEditfrom").data('bootstrapValidator').isValid()) {*/
+        new AjaxRequest({
+            url: "/business/student_information/update",
+            param: $('#studentEditFrom').serializeJson(),
+            buttonid: 'student_EditButton',
+            tableurl:  "/business/student_information/list",
+            tableid: "studentInformationList",
+            tableparam: {currentpagecount:currentpagecount},
+            modalid:'studentEditModal',
+            numberpage:true
+        });
+   // }
 })
+
+
+$('#student_AddButton').bind('click',function(){
+    /*    $("#contractPerformancePlanEditfrom").data('bootstrapValidator').validate();
+        if ($("#contractPerformancePlanEditfrom").data('bootstrapValidator').isValid()) {*/
+    new AjaxRequest({
+        url: "/business/student_information/save",
+        param: $('#studentAddFrom').serializeJson(),
+        buttonid: 'student_AddButton',
+        tableurl:  "/business/student_information/list",
+        tableid: "studentInformationList",
+        tableparam: {currentpagecount:currentpagecount},
+        modalid:'studentAddModal',
+        numberpage:true
+    });
+    // }
+})
+
+$('#dateofbirth_edit,#dateofbirth_add').datetimepicker({
+    autoclose:true,//选中关闭
+    language:  'zh-CN',
+    todayHighlight:true,
+    minView:2, //最精准的时间选择为日期0-分 1-时 2-日 3-月
+    format: 'yyyy-mm-dd'      /*此属性是显示顺序，还有显示顺序是mm-dd-yyyy,yyyy-mm-dd hh:ii*/
+});

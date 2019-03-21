@@ -7,12 +7,14 @@
         <id column="id" property="id" />
         <result column="student_name" property="student_name" />
         <result column="student_phone" property="student_phone" />
-        <result column="student_ties" property="student_ties" />
-        <result column="student_major" property="student_major" />
-        <result column="student_class" property="student_class" />
+        <result column="major_id" property="major_id" />
+        <result column="class_id" property="class_id" />
         <result column="student_gender" property="student_gender" />
-        <result column="student_age" property="student_age" />
+        <result column="dateofbirth" property="dateofbirth" />
         <result column="del_flag" property="del_flag" />
+        <result column="guidanceteacher_id" property="guidanceteacher_id" />
+        <result column="remark" property="remark" />
+        <result column="entrancetime" property="entrancetime" />
     </resultMap>
 
 </mapper>

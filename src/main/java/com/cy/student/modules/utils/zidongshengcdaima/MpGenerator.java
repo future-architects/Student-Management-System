@@ -21,7 +21,7 @@ public class MpGenerator {
         GlobalConfig gc = new GlobalConfig();
         gc.setAuthor("袁帅");
 //        gc.setOutputDir("D://workspace/spring-boot-mybatis/src/main/java");
-        gc.setOutputDir("D://myPoject/StudentManagement/src/main/java");
+        gc.setOutputDir("D://studentPoject/StudentManagements/src/main/java");
         gc.setFileOverride(false);// 是否覆盖同名文件，默认是false
         gc.setActiveRecord(true);// 不需要ActiveRecord特性的请改为false
         gc.setEnableCache(false);// XML 二级缓存
