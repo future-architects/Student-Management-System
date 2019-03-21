@@ -3,6 +3,7 @@ var currentpagecount="";
 
 $(document).ready(function() {
 
+    var studentname="";
     //收藏、下载、建议、废除、复用-触发
     //
     window.operateEvents = {
@@ -42,7 +43,7 @@ $(document).ready(function() {
             currentpagecount = ((params.offset / params.limit) + 1)
             //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             var temp = {
-                "temp":1,
+                "student_name":studentname,
                 "currentpagecount": "" + ((params.offset / params.limit) + 1) + "" //页码
             };
 
@@ -115,6 +116,19 @@ $(document).ready(function() {
     };
 
 
+
+    //查询
+    $('#studentsearchbutton').bind('click',function(){
+        studentname=$("#studentname_search").val();
+
+        $("#studentInformationList").bootstrapTable('refreshOptions',
+            {   pageNumber:1,
+                student_name:studentname,
+
+            });
+    });
+
+
 });
 
 
@@ -146,8 +160,8 @@ $('#studentDelButton').bind('click',function() {
 });
 
 $('#student_EditButton').bind('click',function(){
-/*    $("#contractPerformancePlanEditfrom").data('bootstrapValidator').validate();
-    if ($("#contractPerformancePlanEditfrom").data('bootstrapValidator').isValid()) {*/
+    $("#studentEditFrom").data('bootstrapValidator').validate();
+    if ($("#studentEditFrom").data('bootstrapValidator').isValid()) {
         new AjaxRequest({
             url: "/business/student_information/update",
             param: $('#studentEditFrom').serializeJson(),
@@ -158,13 +172,13 @@ $('#student_EditButton').bind('click',function(){
             modalid:'studentEditModal',
             numberpage:true
         });
-   // }
+   }
 })
 
 
 $('#student_AddButton').bind('click',function(){
-    /*    $("#contractPerformancePlanEditfrom").data('bootstrapValidator').validate();
-        if ($("#contractPerformancePlanEditfrom").data('bootstrapValidator').isValid()) {*/
+        $("#studentAddFrom").data('bootstrapValidator').validate();
+        if ($("#studentAddFrom").data('bootstrapValidator').isValid()) {
     new AjaxRequest({
         url: "/business/student_information/save",
         param: $('#studentAddFrom').serializeJson(),
@@ -175,7 +189,7 @@ $('#student_AddButton').bind('click',function(){
         modalid:'studentAddModal',
         numberpage:true
     });
-    // }
+    }
 })
 
 $('#dateofbirth_edit,#dateofbirth_add').datetimepicker({
