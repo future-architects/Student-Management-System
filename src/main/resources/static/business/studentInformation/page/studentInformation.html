@@ -7,6 +7,8 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
+    <!--<meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />-->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title></title>
     <script src="/lib/public/publicCSS.js"></script>
     <!--<script type="text/javascript" src="../../../assets/js/jquery-2.0.3.min.js"></script>-->
@@ -223,6 +225,17 @@
             <span  aria-hidden="true" ></span>新增
         </button>
     </div>
+
+    <a href="/business/student_informations/export"><button type="button" class="btn btn-primary">导出</button></a>
+
+    <form class="form-horizontal" id="form_table"  enctype="multipart/form-data" >
+        <br/>
+        <br/>
+        <input class="form-input" type="file" name="filename" ></input>
+        <button type="submit" class="btn btn-primary" id="daoru">导入</button>
+    </form>
+
+
 
     <section id="main-content">
         <section class="wrapper">
