@@ -1,9 +1,8 @@
 package com.cy.student.modules.service;
 
-import com.cy.student.modules.entity.Student_information;
+import com.cy.student.modules.entity.StudentInformation;
 import com.baomidou.mybatisplus.service.IService;
 import com.cy.student.modules.utils.PageUtils;
-import com.cy.student.modules.utils.R;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.Map;
@@ -16,7 +15,7 @@ import java.util.Map;
  * @author 袁帅
  * @since 2019-03-21
  */
-public interface IStudent_informationService extends IService<Student_information> {
+public interface IStudentInformationService extends IService<StudentInformation> {
 
     PageUtils queryPage(Map<String, Object> params);
 

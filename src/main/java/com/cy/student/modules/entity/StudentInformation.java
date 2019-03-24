@@ -1,5 +1,6 @@
 package com.cy.student.modules.entity;
 
+import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
 import java.util.Date;
 import com.baomidou.mybatisplus.annotations.TableId;
@@ -16,7 +17,8 @@ import java.io.Serializable;
  * @author 袁帅
  * @since 2019-03-21
  */
-public class Student_information extends Model<Student_information> {
+@TableName("student_information")
+public class StudentInformation extends Model<StudentInformation> {
 
     private static final long serialVersionUID = 1L;
 
@@ -162,7 +164,7 @@ public class Student_information extends Model<Student_information> {
 
     @Override
     public String toString() {
-        return "Student_information{" +
+        return "StudentInformation{" +
         "id=" + id +
         ", student_name=" + student_name +
         ", student_phone=" + student_phone +
