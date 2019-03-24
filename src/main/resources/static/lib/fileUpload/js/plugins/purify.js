@@ -105,7 +105,7 @@ function createDOMPurify() {
       Comment = window.Comment,
       DOMParser = window.DOMParser;
 
-  // As per issue #47, the web-components registry is inherited by a
+  // As per issue #47, the controller-components registry is inherited by a
   // new document created via createHTMLDocument. As per the spec
   // (http://w3c.github.io/webcomponents/spec/custom/#creating-and-passing-registries)
   // a new empty registry is used when creating a template contents owner
