@@ -60,12 +60,17 @@
 <div class="back-image">
     <h1>欢迎使用学生管理系统</h1>
     <div class="login-block">
-    <form action="">
-        <input type="text" class="account form-control" placeholder="请输入管理员账号">
-        <input type=password class="password form-control" placeholder="请输入密码">
+    <form name="form" accept-charset="utf-8"  action="/loginVerify" method="post">
+        <input type="text" class="account form-control" id="username" name="username" placeholder="请输入账号">
+        <input type=password class="password form-control" id="password" name="password" placeholder="请输入密码">
+        <div>
+            <input type="submit" value="登录"/>
+        </div>
     </form>
-        <button>登陆</button>
+        <!--<button id="login">登陆</button>-->
     </div>
 </div>
 </body>
 </html>
+<!--<script src="lib/jquery.min.js"></script>-->
+<!--<script src="login.js"></script>-->
