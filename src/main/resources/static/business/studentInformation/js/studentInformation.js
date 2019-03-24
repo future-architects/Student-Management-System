@@ -185,3 +185,24 @@ $('#dateofbirth_edit,#dateofbirth_add').datetimepicker({
     minView:2, //最精准的时间选择为日期0-分 1-时 2-日 3-月
     format: 'yyyy-mm-dd'      /*此属性是显示顺序，还有显示顺序是mm-dd-yyyy,yyyy-mm-dd hh:ii*/
 });
+
+
+
+
+$("#daoru").click(function(){
+    var formdata = new FormData($("#form_table")[0]);
+    $.ajax({
+        url: "/business/student_informations/import",
+        type: "POST",
+        data:formdata,
+        dataType: "json",
+        processData: false,  // 告诉jQuery不要去处理发送的数据
+        contentType: false,   // 告诉jQuery不要去设置Content-Type请求头
+        success: function (res) {
+        }
+    })
+})
+
+function impron() {
+
+}
