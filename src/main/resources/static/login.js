@@ -1,10 +1,14 @@
-
-$("#login").click(function () {
-    alert(22)
-    $.ajax({
-        url: "/sys/login/loginVerify",
-        type:"POST",
-        data:{username:$("#username").val(),password:$("#password").val()},
-    })
-
+$.ajax({
+    url:"/user/user",
+    type: 'get',
+    param: {},
+    callBack: function (data) {
+        alert(data)
+        $("#person").html(getMyName())
+    }
 })
+
+function getMyName(){
+    var myName = '<%=session.getAttribute("personName")%>';
+    alert(myName);
+}

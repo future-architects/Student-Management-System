@@ -1,11 +1,14 @@
 package com.cy.student.modules.sys.user.controller;
 
 
+import com.baomidou.mybatisplus.mapper.EntityWrapper;
+import com.cy.student.modules.sys.login.LoginController;
 import com.cy.student.modules.sys.user.entity.User;
 import com.cy.student.modules.sys.user.service.IUserService;
 import com.cy.student.modules.utils.R;
 import com.cy.student.modules.utils.md5.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -38,5 +41,11 @@ public class UserController {
         }
     }
 
+
+    @RequestMapping("/user")
+    public String currentUser(){
+        User user = userService.selectOne(new EntityWrapper<User>().eq("id", LoginController.ID));
+        return user.getPerson_name();
+    }
 
 }

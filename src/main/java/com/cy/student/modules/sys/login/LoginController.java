@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by huangds on 2017/10/24.
@@ -21,6 +23,8 @@ public class LoginController {
 
     @Autowired
     private IUserService userService;
+
+    public static Integer ID;
 
     @GetMapping("/")
     public String index(@SessionAttribute(WebSecurityConfig.SESSION_KEY)String account, Model model){
@@ -43,12 +47,17 @@ public class LoginController {
 
         User user1 = userService.selectOne(new EntityWrapper<User>().eq("username", username).eq("password", password));
         if (user1!=null) {
-            session.setAttribute(WebSecurityConfig.SESSION_KEY, username);
+            List list = new ArrayList();
+            list.add(username);
+            list.add(user1.getPerson_name());
+            session.setAttribute(WebSecurityConfig.SESSION_KEY, list);
+            ID=user1.getId();
             return "redirect:/main";
         } else {
             return "redirect:/login";
         }
     }
+
 
     @GetMapping("/logout")
     public String logout(HttpSession session){
