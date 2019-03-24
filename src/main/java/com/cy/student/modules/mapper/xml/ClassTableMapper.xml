@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cy.student.modules.mapper.ClassTableMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.cy.student.modules.entity.ClassTable">
+        <id column="id" property="id" />
+        <result column="class_uuid" property="class_uuid" />
+        <result column="class_name" property="class_name" />
+        <result column="class_number" property="class_number" />
+        <result column="class_start_time" property="class_start_time" />
+        <result column="class_end_time" property="class_end_time" />
+        <result column="tercher_Headmaster_id" property="tercher_Headmaster_id" />
+        <result column="tercher_lecturer_id" property="tercher_lecturer_id" />
+        <result column="class_major" property="class_major" />
+        <result column="create_user_uuid" property="create_user_uuid" />
+        <result column="create_time" property="create_time" />
+    </resultMap>
+
+</mapper>

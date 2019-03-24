@@ -1,13 +1,14 @@
-/*package com.cy.student.modules.sys.login.controller;
+package com.cy.student.modules.sys.login.controller;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.cy.student.modules.sys.user.entity.User;
 import com.cy.student.modules.sys.user.service.IUserService;
 import com.cy.student.modules.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.controller.bind.annotation.RequestBody;
-import org.springframework.controller.bind.annotation.RequestMapping;
-import org.springframework.controller.bind.annotation.RestController;
+
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("sys/login")
@@ -30,4 +31,4 @@ public class LoginController {
     }
 
 
-}*/
+}
