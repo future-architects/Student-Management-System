@@ -4,7 +4,10 @@ import com.cy.student.modules.sys.user.entity.User;
 import com.cy.student.modules.sys.user.mapper.UserMapper;
 import com.cy.student.modules.sys.user.service.IUserService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.cy.student.modules.utils.md5.MD5Utils;
 import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -16,5 +19,6 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
+
 
 }
