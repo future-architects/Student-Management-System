@@ -1,8 +1,8 @@
 package com.cy.student.modules.excel;
 
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.cy.student.modules.entity.Student_information;
-import com.cy.student.modules.service.IStudent_informationService;
+import com.cy.student.modules.entity.StudentInformation;
+import com.cy.student.modules.service.IStudentInformationService;
 import com.cy.student.modules.utils.R;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -24,7 +24,7 @@ import java.util.List;
 @RequestMapping("business/student_informations")
 public class ExcelImport {
     @Autowired
-    private IStudent_informationService student_informationService;
+    private IStudentInformationService student_informationService;
 
     @RequestMapping(value = "/import")
     public R exImport(@RequestParam(value = "filename") MultipartFile file) {
@@ -47,7 +47,7 @@ public class ExcelImport {
     @RequestMapping(value = "/export")
     @ResponseBody
     public void export(HttpServletResponse response) throws IOException {
-        List<Student_information> studentList = student_informationService.selectList(new EntityWrapper<Student_information>().eq("del_flag",0));
+        List<StudentInformation> studentList = student_informationService.selectList(new EntityWrapper<StudentInformation>().eq("del_flag",0));
 
         HSSFWorkbook wb = new HSSFWorkbook();
 
@@ -88,7 +88,7 @@ public class ExcelImport {
 
         for (int i = 0; i < studentList.size(); i++) {
             row = sheet.createRow(i + 2);
-            Student_information student_information = studentList.get(i);
+            StudentInformation student_information = studentList.get(i);
             row.createCell(0).setCellValue(student_information.getStudent_name());
             row.createCell(1).setCellValue(student_information.getStudent_phone());
             row.createCell(2).setCellValue(student_information.getMajor_id());

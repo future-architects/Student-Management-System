@@ -1,18 +1,15 @@
 package com.cy.student.modules.service.impl;
 
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.cy.student.modules.entity.Student_information;
-import com.cy.student.modules.mapper.Student_informationMapper;
-import com.cy.student.modules.service.IStudent_informationService;
+import com.cy.student.modules.entity.StudentInformation;
+import com.cy.student.modules.mapper.StudentInformationMapper;
+import com.cy.student.modules.service.IStudentInformationService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import com.cy.student.modules.utils.MyException;
 import com.cy.student.modules.utils.PageUtils;
-import com.cy.student.modules.utils.R;
 import com.cy.student.modules.utils.check.CheckUtils;
 import com.cy.student.modules.utils.dao.DaoUtils;
 import com.cy.student.modules.utils.factory.PageUtilsFactory;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -37,13 +34,13 @@ import java.util.Map;
  * @since 2019-03-21
  */
 @Service
-public class Student_informationServiceImpl extends ServiceImpl<Student_informationMapper, Student_information> implements IStudent_informationService {
+public class StudentInformationServiceImpl extends ServiceImpl<StudentInformationMapper, StudentInformation> implements IStudentInformationService {
 
     @Autowired
-    private IStudent_informationService student_informationService;
+    private IStudentInformationService student_informationService;
 
     @Autowired
-    private DaoUtils<Student_information> dateUtils;
+    private DaoUtils<StudentInformation> dateUtils;
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
 
@@ -67,7 +64,7 @@ public class Student_informationServiceImpl extends ServiceImpl<Student_informat
     @Override
     public boolean batchImport(String fileName, MultipartFile file) throws Exception {
         boolean notNull = false;
-        List<Student_information> studentList = new ArrayList<>();
+        List<StudentInformation> studentList = new ArrayList<>();
         if (!fileName.matches("^.+\\.(?i)(xls)$") && !fileName.matches("^.+\\.(?i)(xlsx)$")) {
             throw new MyException("上传文件格式不正确");
         }
@@ -86,7 +83,7 @@ public class Student_informationServiceImpl extends ServiceImpl<Student_informat
         if(sheet!=null){
             notNull = true;
         }
-        Student_information student;
+        StudentInformation student;
         for (int r = 2; r <= sheet.getLastRowNum(); r++) {//r = 2 表示从第三行开始循环 如果你的第三行开始是数据
             Row row = sheet.getRow(r);//通过sheet表单对象得到 行对象
             if (row == null){
@@ -95,7 +92,7 @@ public class Student_informationServiceImpl extends ServiceImpl<Student_informat
 
             //sheet.getLastRowNum() 的值是 10，所以Excel表中的数据至少是10条；不然报错 NullPointerException
 
-            student = new Student_information();
+            student = new StudentInformation();
 
             if( row.getCell(0).getCellType() !=1){//循环时，得到每一行的单元格进行判断
                 throw new MyException("导入失败(第"+(r+1)+"行,用户名请设为文本格式)");
@@ -148,7 +145,7 @@ public class Student_informationServiceImpl extends ServiceImpl<Student_informat
 
             studentList.add(student);
         }
-        for (Student_information userResord : studentList) {
+        for (StudentInformation userResord : studentList) {
             student_informationService.insert(userResord);
             System.out.println(" 插入 "+userResord);
 //            String name = userResord.getUsername();

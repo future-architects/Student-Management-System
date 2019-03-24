@@ -1,6 +1,6 @@
 package com.cy.student.modules.mapper;
 
-import com.cy.student.modules.entity.Student_information;
+import com.cy.student.modules.entity.StudentInformation;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,6 +13,6 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2019-03-21
  */
 @Mapper
-public interface Student_informationMapper extends BaseMapper<Student_information> {
+public interface StudentInformationMapper extends BaseMapper<StudentInformation> {
 
 }
