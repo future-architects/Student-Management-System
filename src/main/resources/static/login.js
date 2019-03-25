@@ -15,12 +15,12 @@
 //     }
 // })
 
-    new AjaxRequest({
-        url:   "/user/user",
-        type: 'get',
-        param: {},
-        callBack: function (data) {
-            alert(data)
-            ${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}
-        }
-    });
+    // new AjaxRequest({
+    //     url:   "/user/user",
+    //     type: 'get',
+    //     param: {},
+    //     callBack: function (data) {
+    //         alert(data)
+    //         ${session.SPRING_SECURITY_CONTEXT.authentication.principal.username}
+    //     }
+    // });
