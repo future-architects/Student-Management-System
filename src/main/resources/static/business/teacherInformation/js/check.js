@@ -15,6 +15,21 @@ function teacherAddValidator() {
                     }
                 }
             },
+            teacher_id: {
+                trigger:'blur',
+                validators: {
+                    notEmpty: {
+                        message: '工号不能为空'
+                    }
+                }
+            }, teacher_address: {
+                trigger:'blur',
+                validators: {
+                    notEmpty: {
+                        message: '地址不能为空'
+                    }
+                }
+            },
             teacher_phone: {
                 trigger:'blur',
                 validators: {
@@ -79,6 +94,21 @@ function teacherEditValidator() {
                 validators: {
                     notEmpty: {
                         message: '教师姓名不能为空'
+                    }
+                }
+            },
+            teacher_id: {
+                trigger:'blur',
+                validators: {
+                    notEmpty: {
+                        message: '工号不能为空'
+                    }
+                }
+            }, teacher_address: {
+                trigger:'blur',
+                validators: {
+                    notEmpty: {
+                        message: '地址不能为空'
                     }
                 }
             },
