@@ -9,12 +9,9 @@ import com.cy.student.modules.utils.AbstractController;
 import com.cy.student.modules.utils.PageUtils;
 import com.cy.student.modules.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletResponse;
@@ -29,7 +26,7 @@ import java.util.Map;
  * @author zpf
  * @since 2019-03-24
  */
-@Controller
+@RestController
 @RequestMapping("business/teacher_information")
 public class TeacherInformationController extends AbstractController {
 

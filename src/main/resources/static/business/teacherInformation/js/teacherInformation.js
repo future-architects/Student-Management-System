@@ -115,7 +115,7 @@ $(document).ready(function() {
 
     //查询
     $('#teachersearchbutton').bind('click',function(){
-        studentname=$("#teachername_search").val();
+        teachername=$("#teachername_search").val();
 
         $("#teacherInformationList").bootstrapTable('refreshOptions',
             {   pageNumber:1,
