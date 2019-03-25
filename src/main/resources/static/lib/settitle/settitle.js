@@ -1,3 +1,3 @@
 $(document).ready(function(){
-    document.title = '合同法务暨制度一体化平台';
+    document.title = '袁氏集团学生管理一体化';
 });

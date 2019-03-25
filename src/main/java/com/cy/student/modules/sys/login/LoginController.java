@@ -43,14 +43,15 @@ public class LoginController {
     }
 
     @PostMapping("/loginVerify")
-    public String loginVerify(String username,String password, HttpSession session){
+    public synchronized String loginVerify(String username,String password, HttpSession session){
 
         User user1 = userService.selectOne(new EntityWrapper<User>().eq("username", username).eq("password", password));
         if (user1!=null) {
             List list = new ArrayList();
-            list.add(username);
-            list.add(user1.getPerson_name());
-            session.setAttribute(WebSecurityConfig.SESSION_KEY, list);
+//            list.add(username);
+//            list.add(user1.getPerson_name());
+            session.setAttribute(WebSecurityConfig.SESSION_KEY, username);
+//            session.getAttributeNames()
             ID=user1.getId();
             return "redirect:/main";
         } else {
