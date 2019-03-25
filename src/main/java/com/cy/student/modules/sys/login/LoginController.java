@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.cy.student.modules.config.WebSecurityConfig;
 import com.cy.student.modules.sys.user.entity.User;
 import com.cy.student.modules.sys.user.service.IUserService;
+import com.cy.student.modules.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,8 +48,9 @@ public class LoginController {
 
         User user1 = userService.selectOne(new EntityWrapper<User>().eq("username", username).eq("password", password));
         if (user1!=null) {
-            List list = new ArrayList();
-//            list.add(username);
+//            List list = new ArrayList();
+//            list.add("redirect:/main");
+//            list.add(R.ok("登陆成功"));
 //            list.add(user1.getPerson_name());
             session.setAttribute(WebSecurityConfig.SESSION_KEY, username);
 //            session.getAttributeNames()

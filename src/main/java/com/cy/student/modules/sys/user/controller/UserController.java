@@ -9,9 +9,7 @@ import com.cy.student.modules.utils.R;
 import com.cy.student.modules.utils.md5.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
 import java.util.Date;
 import java.util.Map;
@@ -26,7 +24,7 @@ import javax.servlet.http.HttpSession;
  * @author 袁帅
  * @since 2019-03-24
  */
-@Controller
+@RestController
 @RequestMapping("sys/user")
 public class UserController {
 
@@ -47,10 +45,11 @@ public class UserController {
     }
 
 
-    @RequestMapping("/user")
-    public R currentUser(@RequestBody User user){
-        User user1 = userService.selectOne(new EntityWrapper<User>().eq("username", user.getUsername()).eq("password", user.getPassword()));
-        if (user1!=null){
+    @PostMapping("/is")
+    public R currentUser(@RequestBody Map<String,Object> param){
+        Object username = param.get("username");
+//        User user1 = userService.selectOne(new EntityWrapper<User>().eq("username", user.getUsername()).eq("password", user.getPassword()));
+        if (username!=null){
             return R.ok("登陆成功");
         }
         return R.error("用户名或密码错误");
