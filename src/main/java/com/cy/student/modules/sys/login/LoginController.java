@@ -5,6 +5,7 @@ import com.cy.student.modules.config.WebSecurityConfig;
 import com.cy.student.modules.sys.user.entity.User;
 import com.cy.student.modules.sys.user.service.IUserService;
 import com.cy.student.modules.utils.R;
+import com.cy.student.modules.utils.md5.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -45,8 +46,8 @@ public class LoginController {
 
     @PostMapping("/loginVerify")
     public synchronized String loginVerify(String username,String password, HttpSession session){
-
-        User user1 = userService.selectOne(new EntityWrapper<User>().eq("username", username).eq("password", password));
+        String md5Code = MD5Utils.getMD5Code(password);
+        User user1 = userService.selectOne(new EntityWrapper<User>().eq("username", username).eq("password", md5Code));
         if (user1!=null) {
 //            List list = new ArrayList();
 //            list.add("redirect:/main");
