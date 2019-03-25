@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.stereotype.Controller;
 import java.util.Date;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -47,9 +48,12 @@ public class UserController {
 
 
     @RequestMapping("/user")
-    public User currentUser(){
-        User user = userService.selectOne(new EntityWrapper<User>().eq("id", LoginController.ID));
-        return user;
+    public R currentUser(@RequestBody User user){
+        User user1 = userService.selectOne(new EntityWrapper<User>().eq("username", user.getUsername()).eq("password", user.getPassword()));
+        if (user1!=null){
+            return R.ok("登陆成功");
+        }
+        return R.error("用户名或密码错误");
     }
 
 }

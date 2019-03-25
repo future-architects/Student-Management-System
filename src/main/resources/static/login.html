@@ -56,11 +56,11 @@
         }
     </style>
 </head>
-<body>
+<body><script src="lib/public/publicJS_1.js"></script>
 <div class="back-image">
     <h1>欢迎使用学生管理系统</h1>
     <div class="login-block">
-    <form name="form" accept-charset="utf-8"  action="/loginVerify" method="post">
+    <form id="loginId" name="form" accept-charset="utf-8"  action="/loginVerify" method="post">
         <input type="text" class="account form-control" id="username" name="username" placeholder="请输入账号">
         <input type=password class="password form-control" id="password" name="password" placeholder="请输入密码">
         <div>
@@ -72,5 +72,13 @@
 </div>
 </body>
 </html>
-<!--<script src="lib/jquery.min.js"></script>-->
+<script src="lib/public/publicJS.js"></script>
+<script>
+    $('#login').bind('click',function(){
+            new AjaxRequest({
+                url: "/user/user",
+                param: $('#loginId').serializeJson(),
+            });
+    })
+</script>
 <!--<script src="login.js"></script>-->
