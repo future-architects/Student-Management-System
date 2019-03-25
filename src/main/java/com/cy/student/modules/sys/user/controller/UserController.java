@@ -5,15 +5,20 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.cy.student.modules.sys.login.LoginController;
 import com.cy.student.modules.sys.user.entity.User;
 import com.cy.student.modules.sys.user.service.IUserService;
+import com.cy.student.modules.utils.AbstractController;
+import com.cy.student.modules.utils.PageUtils;
 import com.cy.student.modules.utils.R;
 import com.cy.student.modules.utils.md5.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Controller;
+
+import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -26,11 +31,20 @@ import javax.servlet.http.HttpSession;
  */
 @RestController
 @RequestMapping("sys/user")
-public class UserController {
+public class UserController extends AbstractController {
 
     @Autowired
     private IUserService userService;
 
+
+    /**
+     * 列表
+     */
+    @PostMapping("/list")
+    public void list(@RequestBody Map<String, Object> params , HttpServletResponse response) throws IOException {
+        PageUtils page = userService.queryPage(params);
+        this.ajaxRequestTable( response, page );
+    }
 
     @RequestMapping("/save")
     public R save(@RequestBody User user){
