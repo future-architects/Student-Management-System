@@ -8,11 +8,14 @@ import com.cy.student.modules.sys.user.service.IUserService;
 import com.cy.student.modules.utils.R;
 import com.cy.student.modules.utils.md5.MD5Utils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.Session;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
+
+import javax.servlet.http.HttpSession;
 
 /**
  * <p>
@@ -43,9 +46,9 @@ public class UserController {
 
 
     @RequestMapping("/user")
-    public String currentUser(){
+    public User currentUser(){
         User user = userService.selectOne(new EntityWrapper<User>().eq("id", LoginController.ID));
-        return user.getPerson_name();
+        return user;
     }
 
 }
