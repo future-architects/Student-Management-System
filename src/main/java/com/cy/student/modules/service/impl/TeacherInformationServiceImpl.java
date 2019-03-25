@@ -32,14 +32,14 @@ public class TeacherInformationServiceImpl extends ServiceImpl<TeacherInformatio
     public PageUtils queryPage(Map<String, Object> params) {
         String sql  ="select t.* ,c.class_name\n" +
                 "from teacher_information as t LEFT join class_table as c on t.teacher_class = c.class_number\n" +
-                "where t.delete_flag = 0";
+                "where t.delete_flag = 0 ";
         Object tname = params.get("teacher_name");
         Object tid = params.get("teacher_id");
         if (CheckUtils.isNotNull(tname)){
-            sql+= "and t.teacher_name like '%"+tname+"%'";
+            sql+= "and t.teacher_name like '%"+tname+"%' ";
         }
         if (CheckUtils.isNotNull(tid)){
-            sql+= "and t.teacher_id = "+tid+"";
+            sql+= "and t.teacher_id = "+tid+" ";
         }
         return dateUtils.findBySql(sql, PageUtilsFactory.getInstance(params));
     }

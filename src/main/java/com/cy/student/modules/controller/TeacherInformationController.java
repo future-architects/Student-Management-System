@@ -49,7 +49,7 @@ public class TeacherInformationController extends AbstractController {
           return   R.error("失败");
         }
     }
-    @RequestMapping("/delete")
+    @RequestMapping("/delete/{id}")
     public R deleteTeacher(@PathVariable Integer id){
         TeacherInformation teacherInformation = teacherInformationService.selectOne(new EntityWrapper<TeacherInformation>().eq("id",id));
         teacherInformation.setDelete_flag(-1);

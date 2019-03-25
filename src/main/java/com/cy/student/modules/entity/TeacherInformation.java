@@ -33,6 +33,11 @@ public class TeacherInformation extends Model<TeacherInformation> {
     private String teacher_name;
 
     /**
+     * 教师性别
+     */
+    private Integer teacher_sex;
+
+    /**
      * 教师工号
      */
     private Integer teacher_id;
@@ -161,6 +166,14 @@ public class TeacherInformation extends Model<TeacherInformation> {
         this.update_time = update_time;
     }
 
+    public Integer getTeacher_sex() {
+        return teacher_sex;
+    }
+
+    public void setTeacher_sex(Integer teacher_sex) {
+        this.teacher_sex = teacher_sex;
+    }
+
     @Override
     protected Serializable pkVal() {
         return this.id;
@@ -169,18 +182,19 @@ public class TeacherInformation extends Model<TeacherInformation> {
     @Override
     public String toString() {
         return "TeacherInformation{" +
-        "id=" + id +
-        ", teacher_name=" + teacher_name +
-        ", teacher_id=" + teacher_id +
-        ", teacher_phone=" + teacher_phone +
-        ", teacher_class=" + teacher_class +
-        ", teacher_address=" + teacher_address +
-        ", delete_flag=" + delete_flag +
-        ", teacher_entrytime=" + teacher_entrytime +
-        ", teacher_salary=" + teacher_salary +
-        ", teacher_level=" + teacher_level +
-        ", create_time=" + create_time +
-        ", update_time=" + update_time +
-        "}";
+                "id=" + id +
+                ", teacher_name='" + teacher_name + '\'' +
+                ", teacher_sex=" + teacher_sex +
+                ", teacher_id=" + teacher_id +
+                ", teacher_phone='" + teacher_phone + '\'' +
+                ", teacher_class=" + teacher_class +
+                ", teacher_address='" + teacher_address + '\'' +
+                ", delete_flag=" + delete_flag +
+                ", teacher_entrytime=" + teacher_entrytime +
+                ", teacher_salary=" + teacher_salary +
+                ", teacher_level=" + teacher_level +
+                ", create_time=" + create_time +
+                ", update_time=" + update_time +
+                '}';
     }
 }
