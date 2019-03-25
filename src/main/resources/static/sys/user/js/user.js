@@ -53,7 +53,10 @@ $(document).ready(function() {
             }, {
                 field: 'date_of_birth',
                 title: '出生年月',
-                align: 'center'
+                align: 'center',
+                formatter:function (value, row, index) {
+                    return value.substr(0,10);
+                }
             }, {
                 field: 'create_date',
                 title: '创建时间',
