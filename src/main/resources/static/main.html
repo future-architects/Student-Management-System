@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8" />
 		<title>学生管理平台</title>
@@ -10,6 +10,8 @@
 		<link href="assets/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
 
+
+		<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 
 		<!-- ace styles -->
 
@@ -61,7 +63,8 @@
 								<img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>欢迎光临,</small>
-									Jason
+									<small th:text=""></small>
+
 								</span>
 
 								<i class="icon-caret-down"></i>
@@ -85,7 +88,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="#">
+									<a href="/logout">
 										<i class="icon-off"></i>
 										退出
 									</a>
@@ -250,6 +253,7 @@
 				      id: '31',
 				      text: '用户管理',
 				      icon: 'icon-user',
+				      url: 'sys/user/page/user.html'
 				      url: 'business/teacherInformation/page/teacherInformation.html',
 				     }, {
 				      id: '32',
@@ -322,4 +326,5 @@
 		</script>
 </body>
 </html>
-
+<!--<script src="lib/public/publicJS.js"></script>-->
+<!--<script src="login.js"></script>-->

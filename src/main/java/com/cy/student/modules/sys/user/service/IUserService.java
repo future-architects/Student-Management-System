@@ -2,6 +2,9 @@ package com.cy.student.modules.sys.user.service;
 
 import com.cy.student.modules.sys.user.entity.User;
 import com.baomidou.mybatisplus.service.IService;
+import com.cy.student.modules.utils.PageUtils;
+
+import java.util.Map;
 
 /**
  * <p>
@@ -12,5 +15,7 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2019-03-24
  */
 public interface IUserService extends IService<User> {
+
+    PageUtils queryPage(Map<String, Object> params);
 
 }

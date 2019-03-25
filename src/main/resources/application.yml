@@ -11,7 +11,6 @@ server:
     context-path: /
 systemconfig:
   pagenumber: 10
-
   spring:
     # 环境 dev|test
     profiles:
@@ -135,4 +134,7 @@ systemconfig:
 #    map-underscore-to-camel-case: true
 #    cache-enabled: false
 #    call-setters-on-nulls: true
+#spring:
+#  mvc:
+#    static-path-pattern: /static/**
 #    #log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #打印sql语句,调试用
