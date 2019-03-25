@@ -59,14 +59,25 @@ public class UserController extends AbstractController {
     }
 
 
-    @PostMapping("/is")
-    public R currentUser(@RequestBody Map<String,Object> param){
-        Object username = param.get("username");
-//        User user1 = userService.selectOne(new EntityWrapper<User>().eq("username", user.getUsername()).eq("password", user.getPassword()));
-        if (username!=null){
-            return R.ok("登陆成功");
+    @RequestMapping("/is")
+    public User currentUser(){
+        User user = userService.selectOne(new EntityWrapper<User>().eq("id", LoginController.ID));
+        return user;
+    }
+    @RequestMapping("/editPassword")
+    public R editPassword(String newPassword,String password){
+        boolean b=false;
+        User user1 = userService.selectOne(new EntityWrapper<User>().eq("id", LoginController.ID));
+        if (password.equals(user1.getPassword())){
+            user1.setPassword(newPassword);
+            b = userService.updateById(user1);
         }
-        return R.error("用户名或密码错误");
+        if (b==true){
+            return R.ok("操作成功");
+        }else {
+            return R.error("操作失败");
+        }
+
     }
 
 }
